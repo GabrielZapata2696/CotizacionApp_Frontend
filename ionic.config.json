@@ -1,0 +1,7 @@
+{
+  "name": "sitekol-frontend-new",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
