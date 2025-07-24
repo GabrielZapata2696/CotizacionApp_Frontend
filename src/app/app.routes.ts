@@ -4,27 +4,26 @@ import { NoAuthGuard } from './shared/guards/no-auth.guard';
 
 export const routes: Routes = [
   {
-    path: 'login',
-    loadComponent: () => import('./shared/components/login/login.component').then((m) => m.LoginComponent),
+    path: 'auth',
+    loadChildren: () => import('./shared/pages/auth/auth.routes').then(m => m.AUTH_ROUTES),
     canActivate: [NoAuthGuard],
   },
   {
-    path: 'forgot-password',
-    loadComponent: () => import('./shared/components/forgot-password/forgot-password.component').then((m) => m.ForgotPasswordComponent),
-    canActivate: [NoAuthGuard],
+    path: 'reset-password',
+    loadChildren: () => import('./shared/pages/reset-password/reset-password.routes').then(m => m.RESET_PASSWORD_ROUTES),
   },
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    loadChildren: () => import('./home/home.routes').then(m => m.HOME_ROUTES),
     canActivate: [AuthGuard],
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
   {
     path:'**',
-    redirectTo: 'login',
+    redirectTo: 'auth',
   }
 ];

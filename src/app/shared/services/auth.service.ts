@@ -25,6 +25,16 @@ export interface ForgotPasswordResponse {
   message: string;
 }
 
+export interface ResetPasswordRequest {
+  token: string;
+  newPassword: string;
+}
+
+export interface ResetPasswordResponse {
+  success: boolean;
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,6 +64,10 @@ export class AuthService {
 
   forgotPassword(request: ForgotPasswordRequest): Observable<ForgotPasswordResponse> {
     return this.http.post<ForgotPasswordResponse>(`${environment.apiUrl}/auth/forgot-password`, request);
+  }
+
+  resetPassword(request: ResetPasswordRequest): Observable<ResetPasswordResponse> {
+    return this.http.post<ResetPasswordResponse>(`${environment.apiUrl}/auth/reset-password`, request);
   }
 
   logout(): void {

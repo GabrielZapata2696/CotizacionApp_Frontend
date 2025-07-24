@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicModule, LoadingController, AlertController } from '@ionic/angular';
@@ -15,6 +15,10 @@ import { firstValueFrom } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  @Input() embeddable = false;
+  @Output() switchToForgotPassword = new EventEmitter<void>();
+  @Output() switchToRegister = new EventEmitter<void>();
+  
   loginForm: FormGroup;
   showPassword = false;
 
@@ -103,7 +107,22 @@ private async presentLoading(message: string) {
   // }
 
   goToForgotPassword() {
-    this.router.navigate(['/forgot-password']);
+    // Check if parent component is listening, otherwise use router navigation
+    if (this.switchToForgotPassword.observers.length > 0) {
+      this.switchToForgotPassword.emit();
+    } else {
+      this.router.navigate(['/forgot-password']);
+    }
+  }
+
+  goToRegister() {
+    // Check if parent component is listening, otherwise use router navigation
+    if (this.switchToRegister.observers.length > 0) {
+      this.switchToRegister.emit();
+    } else {
+      // Future: navigate to register route
+      console.log('Register functionality not yet implemented');
+    }
   }
 
   private async showAlert(header: string, message: string) {

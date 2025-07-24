@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicModule, LoadingController, AlertController } from '@ionic/angular';
@@ -13,6 +13,9 @@ import { AuthService, ForgotPasswordRequest } from '../../services/auth.service'
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
+  @Input() embeddable = false;
+  @Output() switchToLogin = new EventEmitter<void>();
+  
   forgotPasswordForm: FormGroup;
   isSubmitted = false;
 
@@ -61,7 +64,12 @@ export class ForgotPasswordComponent {
   }
 
   goToLogin() {
-    this.router.navigate(['/login']);
+    // Check if parent component is listening, otherwise use router navigation
+    if (this.switchToLogin.observers.length > 0) {
+      this.switchToLogin.emit();
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   private async showAlert(header: string, message: string) {
