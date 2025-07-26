@@ -1,26 +1,109 @@
+// Import responsive breakpoints
+@use "../../../theme/breakpoints.scss" as *;
+
+// Toolbar styling with responsive design (mobile-first)
 ion-toolbar {
-  --background: var(--ion-color-primary);
-  --color: var(--ion-color-primary-contrast);
-  --min-height: 56px;
+  // Base mobile styles - inherit from global styles
+  // Additional component-specific styles can go here if needed
+
+  // Enhanced shadow for better visual hierarchy
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  @include tablet {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
+// Menu button - inherits from global styles but can be customized here
 ion-menu-button {
-  --color: var(--ion-color-primary-contrast);
-  --background: transparent;
-  --border-radius: 50%;
-  margin-right: 8px;
+  // Additional component-specific styling if needed
+  // Global styles handle the main responsive behavior
 
-  // Hide on large screens where split-pane shows sidebar
+  // Add subtle animation
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    // Slight scale effect on hover (desktop)
+    @include desktop {
+      transform: scale(1.08);
+    }
+  }
+}
+
+
+.toolbar-title-default{
+  padding-bottom: 0;
 
 }
 
+// Title styling - responsive typography
 ion-title {
-  font-weight: 600;
-  font-size: 20px;
+  // Base mobile styles - inherit fluid typography from global
+  // Additional component-specific styles
+
+  // Responsive text alignment
+  text-align: start;
+
+  @include tablet {
+    text-align: center;
+  }
+
+  @include desktop {
+    text-align: start;
+  }
+
+  // Responsive letter spacing
+  letter-spacing: 0.01em;
+
+  @include tablet {
+    letter-spacing: 0.02em;
+  }
 }
 
+// Buttons container responsive styling
 ion-buttons {
   [slot="start"] {
     margin-left: 0;
+
+    // Responsive margin adjustments
+    @include mobile-sm {
+      margin-right: 0.5rem;
+    }
+
+    @include tablet {
+      margin-right: 0.75rem;
+    }
+  }
+
+  [slot="end"] {
+    margin-right: 0;
+
+    @include tablet {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// Component-specific responsive utilities
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  // Responsive padding
+  @include responsive-spacing(padding, 0.5, 0.75, 1);
+}
+
+// Hide/show elements based on screen size
+.toolbar-mobile-only {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.toolbar-desktop-only {
+  @include mobile-only {
+    display: none !important;
   }
 }

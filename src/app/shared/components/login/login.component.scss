@@ -449,7 +449,7 @@
   .secondary-actions {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
 
     .link-button {
       background: none;
@@ -555,7 +555,7 @@
   }
 
   .form-content {
-    padding: 2rem 3rem;
+    padding: 2rem 0rem 2rem 1rem;
   }
 
   .mobile-hidden {
@@ -580,6 +580,10 @@
       }
     }
   }
+
+  .secondary-actions{
+    text-align: center;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -594,7 +598,7 @@
 
   .form-header {
     margin-bottom: 1.5rem;
-    
+
     h2 {
       font-size: 2.2rem;
     }
@@ -613,7 +617,7 @@
 
   .form-actions {
     margin-top: 1.5rem;
-    
+
     .login-button {
       padding: 0.95rem 1.15rem;
       font-size: 1.05rem;

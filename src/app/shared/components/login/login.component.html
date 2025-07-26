@@ -65,28 +65,18 @@
         </div>
       </div>
 
-      <!-- Desktop Header -->
-      <div class="desktop-header">
-        <div class="brand-logo">
-          <ion-icon name="apps" class="focus-icon"></ion-icon>
-          <span>FOCUS</span>
-        </div>
-        <div class="auth-switch">
-          <span>Already have an account?</span>
-          <button type="button" class="sign-in-link">SIGN IN</button>
-        </div>
-      </div>
+
 
       <!-- Form Content -->
       <div class="form-content">
         <div class="form-header">
-          <h2 class="mobile-hidden">Welcome to Focus!</h2>
-          <p class="mobile-hidden">Register your account</p>
+          <h2 class="mobile-hidden">Bienvenido a Sitekol!</h2>
+          <p class="mobile-hidden">Inicia sesión para ingresar</p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
           <div class="input-group">
-            <label>Email address</label>
+            <label>Correo electrónico: </label>
             <div class="input-wrapper">
               <input
                 type="email"
@@ -102,7 +92,7 @@
           </div>
 
           <div class="input-group">
-            <label>Password</label>
+            <label>Contraseña: </label>
             <div class="input-wrapper password-input">
               <input
                 [type]="showPassword ? 'text' : 'password'"
@@ -128,7 +118,7 @@
               type="submit"
               class="login-button"
               [disabled]="loginForm.invalid">
-              Login
+              Entra!
             </button>
 
             <div class="secondary-actions">
@@ -136,31 +126,17 @@
                 type="button"
                 class="link-button"
                 (click)="goToRegister()">
-                Sign up
+                Registrate
               </button>
               <button
                 type="button"
                 class="link-button"
                 (click)="goToForgotPassword()">
-                Forgot Password
+                ¿Olvidaste tu contraseña?
               </button>
             </div>
 
-            <!-- Social Login (Desktop only) -->
-            <div class="social-login desktop-only">
-              <span>Create account with</span>
-              <div class="social-buttons">
-                <button type="button" class="social-btn facebook">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </button>
-                <button type="button" class="social-btn linkedin">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </button>
-                <button type="button" class="social-btn google">
-                  <ion-icon name="logo-google"></ion-icon>
-                </button>
-              </div>
-            </div>
+
           </div>
         </form>
       </div>

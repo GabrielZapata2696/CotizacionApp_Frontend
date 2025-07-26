@@ -60,7 +60,7 @@ export class ThemeService {
   private updateThemeColor(isDark: boolean): void {
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', isDark ? '#1a1a1a' : '#ffffff');
+      metaThemeColor.setAttribute('content', isDark ? '#003c43' : '#fefbf3');
     }
   }
 

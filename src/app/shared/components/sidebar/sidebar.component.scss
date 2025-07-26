@@ -1,7 +1,25 @@
-// Sidebar menu container styling
+// Import responsive breakpoints
+@use "../../../../theme/breakpoints.scss" as *;
+
+// Sidebar menu container styling with responsive design
 ion-menu {
   --background: var(--ion-color-background);
-  
+
+  // Responsive width using fluid design
+  --width: clamp(15rem, 20vw, 20rem); // 240px to 320px
+
+  @include mobile-only {
+    --width: 16.25rem; // 260px for mobile
+  }
+
+  @include tablet {
+    --width: clamp(17.5rem, 25vw, 20rem); // 280px to 320px
+  }
+
+  @include desktop {
+    --width: clamp(18.75rem, 22vw, 22.5rem); // 300px to 360px
+  }
+
   ion-content {
     // Enable vertical scrolling
     overflow-y: auto;
@@ -18,9 +36,13 @@ ion-menu {
         --border-width: 0 0 1px 0;
         --border-color: var(--ion-color-border);
         --color: var(--ion-color-text);
-        --padding-start: 16px;
-        --padding-end: 16px;
-        --min-height: 48px;
+
+        // Responsive padding
+        @include responsive-spacing(--padding-start, 1, 1.25, 1.5);
+        @include responsive-spacing(--padding-end, 1, 1.25, 1.5);
+
+        // Responsive min-height using touch targets
+        @include touch-target(48px);
 
         &:hover {
           --background: rgba(var(--ion-color-primary-rgb), 0.1);
@@ -165,6 +187,11 @@ ion-menu {
   }
 }
 
+.toolbar-title-default{
+  padding-bottom: 0;
+
+}
+
 // Custom scrollbar styling
 ion-content::part(scroll) {
   scrollbar-width: none; /* Firefox */
@@ -177,7 +204,7 @@ ion-content::part(scroll) {
 .dark {
   ion-menu {
     --background: var(--ion-color-background);
-    
+
     ion-header {
       ion-toolbar {
         --background: var(--ion-color-surface);
@@ -185,27 +212,27 @@ ion-content::part(scroll) {
         border-bottom: 1px solid var(--ion-color-border);
       }
     }
-    
+
     ion-content {
       --background: var(--ion-color-background);
-      
+
       ion-list {
         background: transparent;
-        
+
         ion-item {
           --background: transparent;
           --border-color: var(--ion-color-border);
           --color: var(--ion-color-text);
-          
+
           &:hover {
             --background: rgba(var(--ion-color-primary-rgb), 0.1);
           }
-          
+
           &.router-link-active {
             --background: rgba(var(--ion-color-primary-rgb), 0.2);
             --color: var(--ion-color-primary);
             border-left: 3px solid var(--ion-color-primary);
-            
+
             ion-icon {
               color: var(--ion-color-primary);
             }
@@ -214,7 +241,7 @@ ion-content::part(scroll) {
           ion-icon {
             color: var(--ion-color-text-secondary);
           }
-          
+
           ion-label {
             color: var(--ion-color-text);
           }
@@ -224,56 +251,56 @@ ion-content::part(scroll) {
       .bottom-buttons {
         background: var(--ion-color-background);
         border-top: 1px solid var(--ion-color-border);
-        
+
         // Enhanced dark mode theme toggle button
         .theme-toggle-button {
           background: rgba(var(--ion-color-text-rgb), 0.05);
           border: 1px solid var(--ion-color-border);
-          
+
           &:hover {
             background: rgba(var(--ion-color-text-rgb), 0.08);
             border-color: rgba(var(--ion-color-primary-rgb), 0.3);
           }
-          
+
           .theme-icon {
             color: var(--ion-color-text);
           }
-          
+
           .theme-text {
             color: var(--ion-color-text);
           }
-          
+
           .toggle-switch {
             background: rgba(var(--ion-color-text-rgb), 0.2);
-            
+
             &.active {
               background: var(--ion-color-primary);
               box-shadow: 0 0 10px rgba(var(--ion-color-primary-rgb), 0.3);
             }
-            
+
             .toggle-circle {
               background: var(--ion-color-surface);
               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             }
           }
         }
-        
+
         // Enhanced dark mode logout button
         .logout-button {
           background: rgba(var(--ion-color-danger-rgb), 0.15);
           border: 1px solid rgba(var(--ion-color-danger-rgb), 0.3);
-          
+
           &:hover {
             background: rgba(var(--ion-color-danger-rgb), 0.25);
             border-color: rgba(var(--ion-color-danger-rgb), 0.4);
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(var(--ion-color-danger-rgb), 0.2);
           }
-          
+
           .logout-icon {
             color: var(--ion-color-danger);
           }
-          
+
           .logout-text {
             color: var(--ion-color-danger);
             font-weight: 600;
@@ -297,40 +324,124 @@ ion-header {
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  ion-menu {
-    ion-content {
-      .bottom-buttons {
-        padding: 12px 16px 16px 16px;
-        gap: 10px;
+.titulo{
+  text-align: center
+}
 
-        .theme-toggle-button,
-        .logout-button {
-          padding: 10px 14px;
-          
-          .theme-text,
-          .logout-text {
-            font-size: 13px;
+// Responsive adjustments using mobile-first approach
+ion-menu {
+  ion-content {
+    // Bottom buttons responsive styling
+    .bottom-buttons {
+      // Base mobile styles (mobile-first)
+      @include responsive-spacing(padding, 0.75, 1, 1.25);
+      gap: 0.75rem;
+
+      @include tablet {
+        gap: 1rem;
+      }
+
+      @include desktop {
+        gap: 1.25rem;
+      }
+
+      .theme-toggle-button,
+      .logout-button {
+        // Responsive padding
+        @include responsive-spacing(padding, 0.625, 0.75, 1);
+
+        // Responsive text sizing
+        .theme-text,
+        .logout-text {
+          @include fluid-type(0.8125, 0.875); // 13px to 14px
+        }
+
+        // Responsive icon sizing
+        .theme-icon,
+        .logout-icon {
+          font-size: 1.125rem; // 18px base
+
+          @include mobile-sm {
+            font-size: 1.1875rem; // 19px
           }
-          
-          .theme-icon,
-          .logout-icon {
-            font-size: 18px;
+
+          @include tablet {
+            font-size: 1.25rem; // 20px
           }
         }
-        
-        .theme-toggle-button .toggle-switch {
-          width: 40px;
-          height: 22px;
-          
-          .toggle-circle {
-            width: 18px;
-            height: 18px;
+      }
+
+      // Toggle switch responsive styling
+      .theme-toggle-button .toggle-switch {
+        // Base mobile size
+        width: 2.5rem; // 40px
+        height: 1.375rem; // 22px
+
+        @include mobile-sm {
+          width: 2.625rem; // 42px
+          height: 1.4375rem; // 23px
+        }
+
+        @include tablet {
+          width: 2.75rem; // 44px
+          height: 1.5rem; // 24px
+        }
+
+        .toggle-circle {
+          // Responsive circle size
+          width: 1.125rem; // 18px base
+          height: 1.125rem;
+
+          @include mobile-sm {
+            width: 1.1875rem; // 19px
+            height: 1.1875rem;
           }
-          
-          &.active .toggle-circle {
-            transform: translateX(18px);
+
+          @include tablet {
+            width: 1.25rem; // 20px
+            height: 1.25rem;
+          }
+        }
+
+        &.active .toggle-circle {
+          // Responsive transform distances
+          transform: translateX(1.125rem); // 18px base
+
+          @include mobile-sm {
+            transform: translateX(1.1875rem); // 19px
+          }
+
+          @include tablet {
+            transform: translateX(1.25rem); // 20px
+          }
+        }
+      }
+    }
+
+
+    // Menu items responsive styling
+    ion-list {
+      ion-item {
+        // Responsive icon and text sizing
+        ion-icon {
+          font-size: 1.125rem; // 18px base
+          @include responsive-spacing(margin-right, 0.875, 1, 1.25);
+
+          @include tablet {
+            font-size: 1.25rem; // 20px
+          }
+
+          @include desktop {
+            font-size: 1.375rem; // 22px
+          }
+        }
+
+        ion-label {
+          font-weight: 500;
+          @include fluid-type(0.8125, 0.9375); // 13px to 15px
+
+          @include desktop {
+            font-weight: 500;
           }
         }
       }

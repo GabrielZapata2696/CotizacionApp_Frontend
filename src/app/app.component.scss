@@ -1,25 +1,57 @@
-// Split pane configuration
+// Import responsive breakpoints
+@use "../theme/breakpoints.scss" as *;
+
+// Split pane configuration with responsive design
 ion-split-pane {
-  --side-width: clamp(240px, 25vw, 320px);
-  --side-min-width: 240px;
-  --side-max-width: 320px;
+  // Base mobile configuration (inherits from ion-menu)
+  --side-width: clamp(15rem, 20vw, 20rem); // 240px to 320px
+  --side-min-width: 15rem; // 240px
+  --side-max-width: 22.5rem; // 360px
+  
+  @include tablet {
+    --side-width: clamp(17.5rem, 25vw, 20rem); // 280px to 320px
+    --side-min-width: 17.5rem; // 280px
+  }
+  
+  @include desktop {
+    --side-width: clamp(18.75rem, 22vw, 22.5rem); // 300px to 360px
+    --side-min-width: 18.75rem; // 300px
+  }
 }
 
-// Menu styling
+// Menu styling - responsive width configuration
 ion-menu {
-  --width: clamp(240px, 25vw, 320px);
-  --min-width: 240px;
-  --max-width: 320px;
+  // Inherits responsive width from sidebar component
+  // Additional global menu styling can go here
+  
+  // Enhanced shadow for better visual separation
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  
+  @include tablet {
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
-// Menu items
+// Menu items with responsive design
 ion-item {
-  --padding-start: 16px;
-  --inner-padding-end: 16px;
+  // Responsive padding
+  @include responsive-spacing(--padding-start, 1, 1.25, 1.5);
+  @include responsive-spacing(--inner-padding-end, 1, 1.25, 1.5);
+  
+  // Responsive touch targets
+  @include touch-target(48px);
 
   ion-icon {
-    margin-right: 16px;
-    font-size: 20px;
+    @include responsive-spacing(margin-right, 0.875, 1, 1.25);
+    font-size: 1.125rem; // 18px base
+    
+    @include tablet {
+      font-size: 1.25rem; // 20px
+    }
+    
+    @include desktop {
+      font-size: 1.375rem; // 22px
+    }
   }
 }
 
@@ -27,6 +59,14 @@ ion-item {
 ion-item.ion-activated {
   --background: var(--ion-color-primary-tint);
   --color: var(--ion-color-primary-contrast);
+  
+  // Enhanced visual feedback
+  transform: translateX(2px);
+  transition: all 0.3s ease;
+  
+  @include tablet {
+    transform: translateX(4px);
+  }
 }
 
 // Enhanced sidebar bottom buttons styling
@@ -98,21 +138,41 @@ ion-menu {
 
 
 
-// Mobile specific adjustments
-@media (max-width: 768px) {
-  ion-menu {
-    ion-content {
-      div[style*="position: absolute; bottom: 20px"] {
-        left: 16px !important;
-        right: 16px !important;
-        bottom: 16px !important;
-
-        ion-button {
-          height: 48px !important;
-          font-size: 16px !important;
-
-          ion-icon {
-            font-size: 20px !important;
+// Responsive bottom buttons adjustments
+ion-menu {
+  ion-content {
+    div[style*="position: absolute; bottom: 20px"] {
+      // Responsive positioning and sizing
+      @include mobile-only {
+        left: 1rem !important;
+        right: 1rem !important;
+        bottom: 1rem !important;
+      }
+      
+      @include tablet {
+        left: 1.25rem !important;
+        right: 1.25rem !important;
+        bottom: 1.25rem !important;
+      }
+      
+      ion-button {
+        // Responsive button sizing
+        @include touch-target(44px);
+        @include fluid-type(0.875, 1); // 14px to 16px
+        
+        @include mobile-only {
+          @include touch-target(48px);
+        }
+        
+        ion-icon {
+          font-size: 1.125rem !important; // 18px base
+          
+          @include mobile-only {
+            font-size: 1.25rem !important; // 20px
+          }
+          
+          @include tablet {
+            font-size: 1.1875rem !important; // 19px
           }
         }
       }
@@ -120,8 +180,8 @@ ion-menu {
   }
 }
 
-// Dark mode adjustments
-@media (prefers-color-scheme: dark) {
+// Dark theme specific adjustments (using class-based dark mode)
+body.dark {
   ion-menu {
     ion-content {
       div[style*="position: absolute; bottom: 20px"] {
@@ -139,15 +199,25 @@ ion-menu {
   }
 }
 
-
-
-
-// Main content
+// Main content with responsive design
 #main-content {
   ion-content {
     --padding-top: 0;
     --padding-bottom: 0;
     --padding-start: 0;
     --padding-end: 0;
+    
+    // Responsive content adjustments
+    @include mobile-only {
+      // Additional mobile-specific styles if needed
+    }
+    
+    @include tablet {
+      // Additional tablet-specific styles if needed
+    }
+    
+    @include desktop {
+      // Additional desktop-specific styles if needed
+    }
   }
 }

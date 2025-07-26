@@ -1,3 +1,6 @@
+/* Import custom responsive breakpoints - MUST be first */
+@use "./theme/breakpoints.scss" as *;
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -787,5 +790,233 @@ body.dark {
   
   &:hover {
     background: var(--ion-color-text-secondary);
+  }
+}
+
+// ================================================
+// GLOBAL RESPONSIVE TOOLBAR & MENU BUTTON STYLES
+// ================================================
+
+// Global Toolbar Styling with Responsive Design
+ion-toolbar {
+  // Base mobile-first styles
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  --min-height: 3.5rem; // 56px in rem
+  @include responsive-spacing(padding, 0.75, 1, 1.25); // 12px, 16px, 20px
+  
+  // Tablet adjustments
+  @include tablet {
+    --min-height: 4rem; // 64px
+  }
+  
+  // Desktop adjustments  
+  @include desktop {
+    --min-height: 4.5rem; // 72px
+  }
+  
+  // Title responsive styling
+  ion-title {
+    --color: var(--ion-color-primary-contrast);
+    font-weight: 600;
+    @include fluid-type(1.125, 1.375); // 18px to 22px
+    
+    @include tablet {
+      font-weight: 700;
+    }
+  }
+}
+
+// Global Menu Button Styling - Always matches toolbar color scheme
+ion-menu-button {
+  // Base mobile-first styles
+  --color: var(--ion-color-primary-contrast) !important;
+  --background: transparent !important;
+  --background-hover: rgba(255, 255, 255, 0.1) !important;
+  --background-focused: rgba(255, 255, 255, 0.15) !important;
+  --background-activated: rgba(255, 255, 255, 0.2) !important;
+  --border-radius: 50% !important;
+  --ripple-color: rgba(255, 255, 255, 0.3) !important;
+  --padding-start: 0.5rem !important;
+  --padding-end: 0.5rem !important;
+  --padding-top: 0.5rem !important;
+  --padding-bottom: 0.5rem !important;
+  
+  // Size adjustments
+  width: 2.75rem; // 44px - touch target
+  height: 2.75rem;
+  @include touch-target(44px);
+  
+  // Icon styling
+  ion-icon {
+    font-size: 1.5rem; // 24px
+    
+    @include mobile-sm {
+      font-size: 1.625rem; // 26px
+    }
+    
+    @include tablet {
+      font-size: 1.75rem; // 28px
+    }
+  }
+  
+  // Responsive sizing
+  @include mobile-sm {
+    width: 3rem; // 48px
+    height: 3rem;
+  }
+  
+  @include tablet {
+    width: 3.25rem; // 52px
+    height: 3.25rem;
+  }
+  
+  // Enhanced touch states
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Dark theme adjustments for toolbar elements
+body.dark {
+  ion-menu-button {
+    --background-hover: rgba(255, 255, 255, 0.08) !important;
+    --background-focused: rgba(255, 255, 255, 0.12) !important;
+    --background-activated: rgba(255, 255, 255, 0.16) !important;
+    --ripple-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+// Global button styling for consistency
+ion-button {
+  // Enhanced transitions
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Base responsive sizing
+  @include touch-target(44px);
+  
+  // Fluid typography for button text
+  @include fluid-type(0.875, 1); // 14px to 16px
+  
+  // Responsive padding
+  @include responsive-spacing(--padding-start, 1, 1.25, 1.5);
+  @include responsive-spacing(--padding-end, 1, 1.25, 1.5);
+  @include responsive-spacing(--padding-top, 0.75, 0.875, 1);
+  @include responsive-spacing(--padding-bottom, 0.75, 0.875, 1);
+  
+  // Icon in buttons
+  ion-icon {
+    font-size: 1.125rem; // 18px
+    
+    @include tablet {
+      font-size: 1.25rem; // 20px
+    }
+  }
+  
+  // Size variants
+  &.button-small {
+    @include touch-target(36px);
+    @include fluid-type(0.75, 0.875); // 12px to 14px
+    
+    ion-icon {
+      font-size: 1rem; // 16px
+    }
+  }
+  
+  &.button-large {
+    @include touch-target(56px);
+    @include fluid-type(1, 1.125); // 16px to 18px
+    
+    ion-icon {
+      font-size: 1.375rem; // 22px
+    }
+  }
+}
+
+// Global responsive typography
+html {
+  // Base font size - mobile first
+  font-size: 16px;
+  
+  @include mobile-sm {
+    font-size: 16px;
+  }
+  
+  @include tablet {
+    font-size: 17px;
+  }
+  
+  @include desktop {
+    font-size: 18px;
+  }
+}
+
+// Global responsive spacing utilities
+.responsive-padding {
+  @include responsive-spacing(padding, 1, 1.5, 2);
+}
+
+.responsive-margin {
+  @include responsive-spacing(margin, 1, 1.5, 2);
+}
+
+.responsive-gap {
+  gap: 1rem;
+  
+  @include tablet {
+    gap: 1.5rem;
+  }
+  
+  @include desktop {
+    gap: 2rem;
+  }
+}
+
+// Hide elements responsively
+.hide-mobile {
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+.hide-tablet {
+  @include tablet-only {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include desktop-only {
+    display: none !important;
+  }
+}
+
+// Show elements responsively
+.show-mobile {
+  display: none !important;
+  
+  @include mobile-only {
+    display: block !important;
+  }
+}
+
+.show-tablet {
+  display: none !important;
+  
+  @include tablet-only {
+    display: block !important;
+  }
+}
+
+.show-desktop {
+  display: none !important;
+  
+  @include desktop-only {
+    display: block !important;
   }
 }

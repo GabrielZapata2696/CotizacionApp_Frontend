@@ -12,7 +12,7 @@ import {
   IonLabel,
   IonButton,
   AlertController,
-  LoadingController, IonItemDivider, IonToggle } from '@ionic/angular/standalone';
+  LoadingController } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
@@ -25,7 +25,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'sidebar',
   standalone: true,
-  imports: [IonToggle, IonItemDivider,
+  imports: [
     CommonModule,
     RouterLink,
     IonMenu,
