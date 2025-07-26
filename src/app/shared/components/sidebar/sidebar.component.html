@@ -1,0 +1,45 @@
+<ion-menu type="overlay" contentId="main-content" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+    <ion-list class="sidebar-menu-list">
+      <!-- Dynamic menu items from JSON -->
+      <ion-item
+        *ngFor="let item of sidebarMenuItems"
+        button
+        [routerLink]="item.routerLink"
+        routerDirection="forward">
+        <ion-icon [name]="item.icon" slot="start"></ion-icon>
+        <ion-label>{{ item.label }}</ion-label>
+
+
+      </ion-item>
+
+    </ion-list>
+
+
+    <!-- Bottom action buttons (only show if authenticated) -->
+    <div  class="bottom-buttons">
+
+      <!-- Dark Mode Toggle Button -->
+      <div class="theme-toggle-button" (click)="toggleTheme()">
+        <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'" class="theme-icon"></ion-icon>
+        <span class="theme-text">Dark Mode</span>
+        <div class="toggle-switch" [class.active]="isDarkMode">
+          <div class="toggle-circle"></div>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <div *ngIf="isAuthenticated" class="logout-button" (click)="logout()">
+        <ion-icon name="log-out-outline" class="logout-icon"></ion-icon>
+        <span class="logout-text">Logout</span>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-menu>

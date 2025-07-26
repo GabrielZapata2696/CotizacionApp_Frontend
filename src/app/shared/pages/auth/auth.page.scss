@@ -3,14 +3,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  // min-height: 100vh;
+  --padding-bottom: 0px;
+  --padding-top: 0px;
 }
 
 .auth-container {
   width: 100%;
-  max-width: 400px;
-  padding: 20px;
+  // max-width: min(500px, 90vw);
+  padding: 0px 40px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .auth-view {
@@ -26,42 +29,42 @@
 ::ng-deep {
   .login-container,
   .forgot-password-container {
-    padding: 30px 20px;
-    
+    padding: 10px 20px;
+
     .logo-section {
       text-align: center;
       margin-bottom: 30px;
-      
+
       ion-icon {
         margin-bottom: 15px;
         opacity: 0.8;
       }
-      
+
       h1 {
         color: var(--ion-color-primary);
         margin-bottom: 8px;
         font-weight: 600;
       }
-      
+
       p {
         color: var(--ion-color-medium);
         line-height: 1.4;
       }
     }
-    
+
     ion-item {
       --background: transparent;
       --border-radius: 8px;
       margin-bottom: 16px;
     }
-    
+
     .form-actions {
       margin-top: 25px;
-      
+
       ion-button {
         margin-bottom: 10px;
         --border-radius: 8px;
-        
+
         &.login-button,
         &.recover-button {
           height: 48px;
@@ -97,15 +100,58 @@
   }
 }
 
+// Global override for ion-content scroll padding
+::ng-deep .auth-content {
+  .inner-scroll {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  ion-content::part(scroll) {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
 // Responsive design
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .auth-content {
+    min-height: 100vh;
+    --padding-bottom: 0px;
+    --padding-top: 0px;
+  }
+
   .auth-container {
-    padding: 10px;
-    max-width: calc(100% - 20px);
+    padding: clamp(8px, 2vw, 16px);
+    max-width: calc(100vw - clamp(16px, 4vw, 32px));
   }
 
   .auth-view {
-    border-radius: 8px;
+    border-radius: clamp(6px, 1.5vw, 12px);
+  }
+
+  ::ng-deep {
+    .login-container,
+    .forgot-password-container {
+      padding: clamp(20px, 5vw, 30px) clamp(16px, 4vw, 20px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-content {
+    min-height: 100vh;
+    --padding-bottom: 0px;
+    --padding-top: 0px;
+  }
+
+  .auth-container {
+    padding: 8px;
+    max-width: calc(100vw - 16px);
+  }
+
+  .auth-view {
+    border-radius: 6px;
   }
 }
 

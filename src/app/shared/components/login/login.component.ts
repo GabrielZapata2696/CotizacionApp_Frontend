@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicModule, LoadingController, AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService, LoginRequest } from '../../services/auth.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -26,6 +26,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private loadingController: LoadingController,
     private alertController: AlertController
   ) {
@@ -55,7 +56,10 @@ async onSubmit() {
     await loading.dismiss();
 
     if (response.success) {
-      this.router.navigate(['/home']);
+      // Get returnUrl from query params, default to '/home'
+      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+      console.log('LoginComponent: Login successful, redirecting to:', returnUrl);
+      this.router.navigate([returnUrl]);
     } else {
       await this.showAlert('Error', response.message);
     }

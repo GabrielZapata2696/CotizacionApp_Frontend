@@ -33,5 +33,759 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.class.css";
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+// Custom Global Theme Styles
+// Using our custom color variables from variables.scss
+
+// Light Theme Body Styles
+body {
+  background-color: var(--ion-color-background);
+  color: var(--ion-color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Dark Mode Body Styles
+body.dark {
+  background-color: var(--ion-color-background);
+  color: var(--ion-color-text);
+}
+
+// Enhanced Theme Transition Support
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+// Comprehensive Ionic Component Theme Overrides
+// =============================================
+
+// Core Components
+ion-app {
+  --ion-background-color: var(--ion-color-background);
+  --ion-text-color: var(--ion-color-text);
+}
+
+ion-content {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  --keyboard-offset: 0px;
+}
+
+// Headers and Toolbars
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-surface);
+    --color: var(--ion-color-text);
+    --border-color: var(--ion-color-border);
+    --border-width: 0 0 1px 0;
+    
+    ion-title {
+      --color: var(--ion-color-text);
+    }
+    
+    ion-buttons {
+      ion-button {
+        --color: var(--ion-color-primary);
+        --color-hover: var(--ion-color-primary-shade);
+      }
+    }
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: var(--ion-color-surface);
+    --color: var(--ion-color-text);
+    --border-color: var(--ion-color-border);
+    --border-width: 1px 0 0 0;
+  }
+}
+
+// Navigation Components
+ion-menu {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  
+  ion-content {
+    --background: var(--ion-color-surface);
+  }
+  
+  ion-list {
+    background: var(--ion-color-surface);
+  }
+}
+
+ion-tabs {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text-secondary);
+  --color-selected: var(--ion-color-primary);
+  --border-color: var(--ion-color-border);
+}
+
+ion-tab-bar {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text-secondary);
+  --color-selected: var(--ion-color-primary);
+  --border: 1px solid var(--ion-color-border);
+}
+
+ion-tab-button {
+  --color: var(--ion-color-text-secondary);
+  --color-selected: var(--ion-color-primary);
+  --ripple-color: var(--ion-color-primary);
+}
+
+// Form Components
+ion-item {
+  --background: transparent;
+  --color: var(--ion-color-text);
+  --border-color: var(--ion-color-border);
+  --inner-border-width: 0 0 1px 0;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 48px;
+  
+  ion-label {
+    --color: var(--ion-color-text);
+    
+    &.label-stacked,
+    &.label-floating {
+      --color: var(--ion-color-text-secondary);
+    }
+  }
+  
+  ion-icon {
+    --color: var(--ion-color-text-secondary);
+  }
+  
+  &.item-interactive {
+    --background-hover: rgba(var(--ion-color-primary-rgb), 0.08);
+    --background-activated: rgba(var(--ion-color-primary-rgb), 0.12);
+    --background-focused: rgba(var(--ion-color-primary-rgb), 0.12);
+    --ripple-color: var(--ion-color-primary);
+  }
+  
+  &.item-has-focus {
+    --background: rgba(var(--ion-color-primary-rgb), 0.05);
+  }
+}
+
+ion-list {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  
+  ion-list-header {
+    --background: var(--ion-color-surface);
+    --color: var(--ion-color-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+ion-input, ion-textarea {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  --placeholder-color: var(--ion-color-text-secondary);
+  --highlight-color-focused: var(--ion-color-primary);
+  --highlight-color-valid: var(--ion-color-success);
+  --highlight-color-invalid: var(--ion-color-danger);
+  
+  &.ion-focused {
+    --highlight-color: var(--ion-color-primary);
+  }
+  
+  &.ion-valid {
+    --highlight-color: var(--ion-color-success);
+  }
+  
+  &.ion-invalid {
+    --highlight-color: var(--ion-color-danger);
+  }
+}
+
+ion-select {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  --placeholder-color: var(--ion-color-text-secondary);
+  
+  ion-select-option {
+    --background: var(--ion-color-background);
+    --color: var(--ion-color-text);
+    
+    &:checked {
+      --background: rgba(var(--ion-color-primary-rgb), 0.1);
+      --color: var(--ion-color-primary);
+    }
+  }
+}
+
+ion-checkbox {
+  --background: var(--ion-color-background);
+  --background-checked: var(--ion-color-primary);
+  --border-color: var(--ion-color-border);
+  --border-color-checked: var(--ion-color-primary);
+  --checkmark-color: var(--ion-color-primary-contrast);
+}
+
+ion-radio {
+  --color: var(--ion-color-primary);
+  --color-checked: var(--ion-color-primary);
+  --border-color: var(--ion-color-border);
+  --border-color-checked: var(--ion-color-primary);
+}
+
+ion-toggle {
+  --background: var(--ion-color-border);
+  --background-checked: var(--ion-color-primary);
+  --handle-background: var(--ion-color-background);
+  --handle-background-checked: var(--ion-color-primary-contrast);
+}
+
+ion-range {
+  --bar-background: var(--ion-color-border);
+  --bar-background-active: var(--ion-color-primary);
+  --knob-background: var(--ion-color-primary);
+  --pin-background: var(--ion-color-primary);
+  --pin-color: var(--ion-color-primary-contrast);
+}
+
+// Button Components
+ion-button {
+  --color: var(--ion-color-primary-contrast);
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-shade);
+  --background-focused: var(--ion-color-primary-shade);
+  --background-activated: var(--ion-color-primary-shade);
+  --ripple-color: var(--ion-color-primary-contrast);
+  
+  &.button-fill-clear {
+    --color: var(--ion-color-primary);
+    --color-hover: var(--ion-color-primary-shade);
+    --background: transparent;
+    --background-hover: rgba(var(--ion-color-primary-rgb), 0.08);
+    --background-focused: rgba(var(--ion-color-primary-rgb), 0.08);
+    --background-activated: rgba(var(--ion-color-primary-rgb), 0.12);
+    --ripple-color: var(--ion-color-primary);
+  }
+  
+  &.button-fill-outline {
+    --color: var(--ion-color-primary);
+    --background: transparent;
+    --border-color: var(--ion-color-primary);
+    --color-hover: var(--ion-color-primary-contrast);
+    --background-hover: var(--ion-color-primary);
+    --background-focused: var(--ion-color-primary);
+    --background-activated: var(--ion-color-primary);
+  }
+  
+  // Color variants
+  &.ion-color-secondary {
+    --background: var(--ion-color-secondary);
+    --color: var(--ion-color-secondary-contrast);
+    --background-hover: var(--ion-color-secondary-shade);
+  }
+  
+  &.ion-color-tertiary {
+    --background: var(--ion-color-tertiary);
+    --color: var(--ion-color-tertiary-contrast);
+    --background-hover: var(--ion-color-tertiary-shade);
+  }
+  
+  &.ion-color-success {
+    --background: var(--ion-color-success);
+    --color: var(--ion-color-success-contrast);
+    --background-hover: var(--ion-color-success-shade);
+  }
+  
+  &.ion-color-warning {
+    --background: var(--ion-color-warning);
+    --color: var(--ion-color-warning-contrast);
+    --background-hover: var(--ion-color-warning-shade);
+  }
+  
+  &.ion-color-danger {
+    --background: var(--ion-color-danger);
+    --color: var(--ion-color-danger-contrast);
+    --background-hover: var(--ion-color-danger-shade);
+  }
+}
+
+ion-fab-button {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  --background-hover: var(--ion-color-primary-shade);
+  --background-focused: var(--ion-color-primary-shade);
+  --background-activated: var(--ion-color-primary-shade);
+  --ripple-color: var(--ion-color-primary-contrast);
+}
+
+// Card and Surface Components
+ion-card {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  box-shadow: 0 2px 8px rgba(var(--ion-color-text-rgb), 0.1);
+  border: 1px solid rgba(var(--ion-color-border-rgb), 0.5);
+  
+  ion-card-header {
+    --background: transparent;
+    --color: var(--ion-color-text);
+    
+    ion-card-title {
+      --color: var(--ion-color-text);
+      font-weight: 600;
+    }
+    
+    ion-card-subtitle {
+      --color: var(--ion-color-text-secondary);
+    }
+  }
+  
+  ion-card-content {
+    --background: transparent;
+    --color: var(--ion-color-text);
+  }
+}
+
+// Overlay Components
+ion-modal {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  
+  ion-backdrop {
+    --background: rgba(var(--ion-color-text-rgb), 0.32);
+  }
+}
+
+ion-popover {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  --box-shadow: 0 8px 24px rgba(var(--ion-color-text-rgb), 0.15);
+  border: 1px solid var(--ion-color-border);
+}
+
+ion-alert {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  
+  .alert-head {
+    --color: var(--ion-color-text);
+  }
+  
+  .alert-message {
+    --color: var(--ion-color-text-secondary);
+  }
+  
+  .alert-button {
+    --color: var(--ion-color-primary);
+    
+    &.alert-button-role-cancel {
+      --color: var(--ion-color-text-secondary);
+    }
+  }
+  
+  .alert-input {
+    --background: var(--ion-color-background);
+    --color: var(--ion-color-text);
+    border: 1px solid var(--ion-color-border);
+  }
+}
+
+ion-action-sheet {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  
+  .action-sheet-title {
+    --color: var(--ion-color-text-secondary);
+  }
+  
+  .action-sheet-button {
+    --color: var(--ion-color-text);
+    
+    &.action-sheet-destructive {
+      --color: var(--ion-color-danger);
+    }
+    
+    &.action-sheet-cancel {
+      --color: var(--ion-color-text-secondary);
+    }
+  }
+}
+
+ion-toast {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  --border: 1px solid var(--ion-color-border);
+  --box-shadow: 0 4px 16px rgba(var(--ion-color-text-rgb), 0.15);
+  
+  .toast-button {
+    --color: var(--ion-color-primary);
+  }
+  
+  &.toast-color-success {
+    --background: var(--ion-color-success);
+    --color: var(--ion-color-success-contrast);
+  }
+  
+  &.toast-color-warning {
+    --background: var(--ion-color-warning);
+    --color: var(--ion-color-warning-contrast);
+  }
+  
+  &.toast-color-danger {
+    --background: var(--ion-color-danger);
+    --color: var(--ion-color-danger-contrast);
+  }
+}
+
+ion-loading {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  --spinner-color: var(--ion-color-primary);
+}
+
+// Progress and Activity Indicators
+ion-progress-bar {
+  --background: var(--ion-color-border);
+  --progress-background: var(--ion-color-primary);
+}
+
+ion-skeleton-text {
+  --background: rgba(var(--ion-color-text-rgb), 0.1);
+  --background-rgb: var(--ion-color-text-rgb);
+}
+
+ion-spinner {
+  --color: var(--ion-color-primary);
+}
+
+// Segment Control
+ion-segment {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text-secondary);
+  --color-checked: var(--ion-color-primary);
+  --background-checked: rgba(var(--ion-color-primary-rgb), 0.1);
+  --border-color: var(--ion-color-border);
+  --indicator-color: var(--ion-color-primary);
+  
+  ion-segment-button {
+    --color: var(--ion-color-text-secondary);
+    --color-checked: var(--ion-color-primary);
+    --background-checked: rgba(var(--ion-color-primary-rgb), 0.1);
+    --indicator-color: var(--ion-color-primary);
+    --ripple-color: var(--ion-color-primary);
+  }
+}
+
+// Chip Component
+ion-chip {
+  --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  --color: var(--ion-color-primary);
+  
+  ion-icon {
+    --color: var(--ion-color-primary);
+  }
+}
+
+// Badge Component
+ion-badge {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+}
+
+// Datetime Picker
+ion-datetime {
+  --background: var(--ion-color-background);
+  --color: var(--ion-color-text);
+  
+  .datetime-header {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+  }
+  
+  .calendar-day {
+    --color: var(--ion-color-text);
+    
+    &.calendar-day-today {
+      --color: var(--ion-color-primary);
+    }
+    
+    &.calendar-day-selected {
+      --background: var(--ion-color-primary);
+      --color: var(--ion-color-primary-contrast);
+    }
+  }
+}
+
+// Accordion
+ion-accordion-group {
+  ion-accordion {
+    ion-item {
+      --background: var(--ion-color-surface);
+      --color: var(--ion-color-text);
+    }
+  }
+}
+
+// Breadcrumb
+ion-breadcrumb {
+  --color: var(--ion-color-text-secondary);
+  
+  &.breadcrumb-active {
+    --color: var(--ion-color-text);
+  }
+}
+
+// Searchbar
+ion-searchbar {
+  --background: var(--ion-color-surface);
+  --color: var(--ion-color-text);
+  --placeholder-color: var(--ion-color-text-secondary);
+  --icon-color: var(--ion-color-text-secondary);
+  --clear-button-color: var(--ion-color-text-secondary);
+  --cancel-button-color: var(--ion-color-primary);
+  
+  .searchbar-input {
+    --background: var(--ion-color-background);
+    --color: var(--ion-color-text);
+    border: 1px solid var(--ion-color-border);
+  }
+}
+
+// Prevent horizontal scroll
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Fix for Ionic app container
+ion-app {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+// Fix for ion-content scroll padding issues
+ion-content {
+  &::part(scroll) {
+    padding-bottom: 0;
+  }
+  
+  .inner-scroll {
+    padding-bottom: 0 !important;
+  }
+}
+
+// Custom Component Theme Support
+// ==============================
+
+// Ensure all custom components respect theme variables
+* {
+  // Theme transition for smooth changes
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Custom form controls
+.form-control,
+.input-wrapper,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--ion-color-background) !important;
+  color: var(--ion-color-text) !important;
+  border-color: var(--ion-color-border) !important;
+  
+  &::placeholder {
+    color: var(--ion-color-text-secondary) !important;
+  }
+  
+  &:focus {
+    border-color: var(--ion-color-primary) !important;
+    box-shadow: 0 0 0 2px rgba(var(--ion-color-primary-rgb), 0.2) !important;
+  }
+}
+
+// Custom buttons and links
+.btn,
+.button,
+a:not(ion-button) {
+  &:not([color]) {
+    color: var(--ion-color-primary) !important;
+    
+    &:hover {
+      color: var(--ion-color-primary-shade) !important;
+    }
+  }
+}
+
+// Custom cards and containers
+.card,
+.container,
+.content-area,
+.form-container {
+  background-color: var(--ion-color-surface) !important;
+  color: var(--ion-color-text) !important;
+  border-color: var(--ion-color-border) !important;
+}
+
+// Text elements
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ion-color-text) !important;
+}
+
+p, span, div:not([class*="ion-"]):not([class*="button"]) {
+  color: var(--ion-color-text);
+}
+
+// Secondary text
+.text-secondary,
+.subtitle,
+.caption,
+small {
+  color: var(--ion-color-text-secondary) !important;
+}
+
+// Status colors
+.text-success {
+  color: var(--ion-color-success) !important;
+}
+
+.text-warning {
+  color: var(--ion-color-warning) !important;
+}
+
+.text-danger,
+.text-error {
+  color: var(--ion-color-danger) !important;
+}
+
+.text-info {
+  color: var(--ion-color-info) !important;
+}
+
+.text-primary {
+  color: var(--ion-color-primary) !important;
+}
+
+// Background utilities
+.bg-primary {
+  background-color: var(--ion-color-primary) !important;
+  color: var(--ion-color-primary-contrast) !important;
+}
+
+.bg-secondary {
+  background-color: var(--ion-color-secondary) !important;
+  color: var(--ion-color-secondary-contrast) !important;
+}
+
+.bg-success {
+  background-color: var(--ion-color-success) !important;
+  color: var(--ion-color-success-contrast) !important;
+}
+
+.bg-warning {
+  background-color: var(--ion-color-warning) !important;
+  color: var(--ion-color-warning-contrast) !important;
+}
+
+.bg-danger {
+  background-color: var(--ion-color-danger) !important;
+  color: var(--ion-color-danger-contrast) !important;
+}
+
+.bg-surface {
+  background-color: var(--ion-color-surface) !important;
+  color: var(--ion-color-text) !important;
+}
+
+// Border utilities
+.border {
+  border-color: var(--ion-color-border) !important;
+}
+
+.border-primary {
+  border-color: var(--ion-color-primary) !important;
+}
+
+.border-success {
+  border-color: var(--ion-color-success) !important;
+}
+
+.border-warning {
+  border-color: var(--ion-color-warning) !important;
+}
+
+.border-danger {
+  border-color: var(--ion-color-danger) !important;
+}
+
+// Dark mode specific overrides for custom components
+body.dark {
+  // Ensure proper contrast in dark mode
+  .form-control,
+  .input-wrapper,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    background-color: var(--ion-color-surface) !important;
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(var(--ion-color-primary-rgb), 0.3) !important;
+    }
+  }
+  
+  // Enhanced shadows for dark mode
+  .card,
+  .modal,
+  .popover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  }
+}
+
+// Router link active states
+.router-link-active,
+[routerLinkActive] {
+  color: var(--ion-color-primary) !important;
+  font-weight: 600;
+  
+  &:not(ion-button) {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.1) !important;
+  }
+}
+
+// Focus states for accessibility
+*:focus-visible {
+  outline: 2px solid var(--ion-color-primary) !important;
+  outline-offset: 2px;
+}
+
+// Scrollbar styling for webkit browsers
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ion-color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ion-color-border);
+  border-radius: 3px;
+  
+  &:hover {
+    background: var(--ion-color-text-secondary);
+  }
+}

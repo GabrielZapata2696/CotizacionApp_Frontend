@@ -1,0 +1,164 @@
+[
+  {
+    "label": "Dashboard",
+    "icon": "grid-outline",
+    "routerLink": "/dashboard",
+    "authenticated": true
+  },
+  {
+    "label": "Profile",
+    "icon": "person-circle-outline",
+    "routerLink": "/profile",
+    "authenticated": true
+  },
+  {
+    "label": "Users",
+    "icon": "people-circle-outline",
+    "routerLink": "/users",
+    "rol": "admin",
+    "authenticated": true
+  },
+  {
+    "label": "Settings",
+    "icon": "cog-outline",
+    "routerLink": "/settings",
+    "rol": "admin",
+    "authenticated": true
+  },
+  {
+    "label": "Reports",
+    "icon": "analytics-outline",
+    "routerLink": "/reports",
+    "authenticated": true
+  },
+  {
+    "label": "Messages",
+    "icon": "chatbubbles-outline",
+    "routerLink": "/messages",
+    "authenticated": true
+  },
+  {
+    "label": "Calendar",
+    "icon": "calendar-clear-outline",
+    "routerLink": "/calendar",
+    "authenticated": true
+  },
+  {
+    "label": "Tasks",
+    "icon": "checkbox-outline",
+    "routerLink": "/tasks",
+    "authenticated": true
+  },
+  {
+    "label": "Documents",
+    "icon": "document-text-outline",
+    "routerLink": "/documents",
+    "authenticated": true
+  },
+  {
+    "label": "Files",
+    "icon": "folder-open-outline",
+    "routerLink": "/files",
+    "authenticated": true
+  },
+  {
+    "label": "Notifications",
+    "icon": "notifications-outline",
+    "routerLink": "/notifications",
+    "authenticated": true
+  },
+  {
+    "label": "Help",
+    "icon": "help-buoy-outline",
+    "routerLink": "/help"
+  },
+  {
+    "label": "About",
+    "icon": "information-outline",
+    "routerLink": "/about"
+  },
+  {
+    "label": "Login",
+    "icon": "enter-outline",
+    "routerLink": "/login",
+    "authenticated": false
+  },
+  {
+    "label": "Profile",
+    "icon": "person-circle-outline",
+    "routerLink": "/profile",
+    "authenticated": true
+  },
+  {
+    "label": "Users",
+    "icon": "people-circle-outline",
+    "routerLink": "/users",
+    "rol": "admin",
+    "authenticated": true
+  },
+  {
+    "label": "Settings",
+    "icon": "cog-outline",
+    "routerLink": "/settings",
+    "rol": "admin",
+    "authenticated": true
+  },
+  {
+    "label": "Reports",
+    "icon": "analytics-outline",
+    "routerLink": "/reports",
+    "authenticated": true
+  },
+  {
+    "label": "Messages",
+    "icon": "chatbubbles-outline",
+    "routerLink": "/messages",
+    "authenticated": true
+  },
+  {
+    "label": "Calendar",
+    "icon": "calendar-clear-outline",
+    "routerLink": "/calendar",
+    "authenticated": true
+  },
+  {
+    "label": "Tasks",
+    "icon": "checkbox-outline",
+    "routerLink": "/tasks",
+    "authenticated": true
+  },
+  {
+    "label": "Documents",
+    "icon": "document-text-outline",
+    "routerLink": "/documents",
+    "authenticated": true
+  },
+  {
+    "label": "Files",
+    "icon": "folder-open-outline",
+    "routerLink": "/files",
+    "authenticated": true
+  },
+  {
+    "label": "Notifications",
+    "icon": "notifications-outline",
+    "routerLink": "/notifications",
+    "authenticated": true
+  },
+  {
+    "label": "Help",
+    "icon": "help-buoy-outline",
+    "routerLink": "/help"
+  },
+  {
+    "label": "About",
+    "icon": "information-outline",
+    "routerLink": "/about"
+  },
+  {
+    "label": "Login",
+    "icon": "enter-outline",
+    "routerLink": "/login",
+    "authenticated": false
+  }
+]

@@ -1,20 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<div id="container" class="ion-padding">
+  <h1>Dashboard</h1>
+  <p><strong>Welcome to Sitekol!</strong></p>
+  <p>This is the main dashboard content. The sidebar should be visible on desktop and accessible via menu button on mobile.</p>
+  
+  <div class="debug-info">
+    <h3>Debug Information:</h3>
+    <ul>
+      <li>Current Route: {{ getCurrentRoute() }}</li>
+      <li>Authentication Status: {{ getAuthStatus() }}</li>
+      <li>Should Show Sidebar: {{ getSidebarStatus() }}</li>
+      <li>Viewport: Desktop/Mobile detection active</li>
+    </ul>
   </div>
-</ion-content>
+</div>

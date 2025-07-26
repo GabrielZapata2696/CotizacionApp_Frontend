@@ -1,0 +1,26 @@
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  --min-height: 56px;
+}
+
+ion-menu-button {
+  --color: var(--ion-color-primary-contrast);
+  --background: transparent;
+  --border-radius: 50%;
+  margin-right: 8px;
+
+  // Hide on large screens where split-pane shows sidebar
+
+}
+
+ion-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+ion-buttons {
+  [slot="start"] {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,153 @@
+// Split pane configuration
+ion-split-pane {
+  --side-width: clamp(240px, 25vw, 320px);
+  --side-min-width: 240px;
+  --side-max-width: 320px;
+}
+
+// Menu styling
+ion-menu {
+  --width: clamp(240px, 25vw, 320px);
+  --min-width: 240px;
+  --max-width: 320px;
+}
+
+// Menu items
+ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+
+  ion-icon {
+    margin-right: 16px;
+    font-size: 20px;
+  }
+}
+
+// Active menu item
+ion-item.ion-activated {
+  --background: var(--ion-color-primary-tint);
+  --color: var(--ion-color-primary-contrast);
+}
+
+// Enhanced sidebar bottom buttons styling
+ion-menu {
+  ion-content {
+    // Bottom buttons container
+    div[style*="position: absolute; bottom: 20px"] {
+      padding: 0 16px;
+
+      // Theme toggle button
+      ion-button[fill="outline"] {
+        --border-radius: 12px !important;
+        --border-width: 2px !important;
+        --border-color: var(--ion-color-medium) !important;
+        --color: var(--ion-color-dark) !important;
+        --background: transparent !important;
+        margin-bottom: 12px !important;
+        height: 44px !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+        &:hover {
+          --border-color: var(--ion-color-primary) !important;
+          --color: var(--ion-color-primary) !important;
+          --background: var(--ion-color-primary-tint) !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        ion-icon {
+          font-size: 18px !important;
+          margin-right: 8px !important;
+        }
+      }
+
+      // Logout button
+      ion-button[color="danger"] {
+        --border-radius: 12px !important;
+        --background: var(--ion-color-danger) !important;
+        --color: white !important;
+        height: 44px !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 8px rgba(var(--ion-color-danger-rgb), 0.3) !important;
+
+        &:hover {
+          --background: var(--ion-color-danger-shade) !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 4px 12px rgba(var(--ion-color-danger-rgb), 0.4) !important;
+        }
+
+        &:active {
+          transform: translateY(0) !important;
+        }
+
+        ion-icon {
+          font-size: 18px !important;
+          margin-right: 8px !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+// Mobile specific adjustments
+@media (max-width: 768px) {
+  ion-menu {
+    ion-content {
+      div[style*="position: absolute; bottom: 20px"] {
+        left: 16px !important;
+        right: 16px !important;
+        bottom: 16px !important;
+
+        ion-button {
+          height: 48px !important;
+          font-size: 16px !important;
+
+          ion-icon {
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+@media (prefers-color-scheme: dark) {
+  ion-menu {
+    ion-content {
+      div[style*="position: absolute; bottom: 20px"] {
+        ion-button[fill="outline"] {
+          --border-color: var(--ion-color-medium-tint) !important;
+          --color: var(--ion-color-light) !important;
+
+          &:hover {
+            --border-color: var(--ion-color-primary-tint) !important;
+            --color: var(--ion-color-primary-tint) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// Main content
+#main-content {
+  ion-content {
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+}

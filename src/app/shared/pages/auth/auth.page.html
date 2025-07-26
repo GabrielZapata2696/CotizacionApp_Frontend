@@ -1,19 +1,19 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-title>
-      {{ currentView === 'login' ? 'Iniciar Sesión' : 
-         currentView === 'forgot-password' ? 'Recuperar Contraseña' : 
+      {{ currentView === 'login' ? 'Iniciar Sesión' :
+         currentView === 'forgot-password' ? 'Recuperar Contraseña' :
          'Registro' }}
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true" class="auth-content">
   <div class="auth-container">
-    
+
     <!-- Login View -->
     <div *ngIf="currentView === 'login'" class="auth-view">
-      <app-login 
+      <app-login
         [embeddable]="true"
         (switchToForgotPassword)="switchView('forgot-password')"
         (switchToRegister)="switchView('register')">
@@ -22,7 +22,7 @@
 
     <!-- Forgot Password View -->
     <div *ngIf="currentView === 'forgot-password'" class="auth-view">
-      <app-forgot-password 
+      <app-forgot-password
         [embeddable]="true"
         (switchToLogin)="switchView('login')">
       </app-forgot-password>

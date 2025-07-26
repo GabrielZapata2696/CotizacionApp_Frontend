@@ -1,95 +1,169 @@
 <!-- Standalone mode with header and content -->
-<ng-container *ngIf="!embeddable">
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-title>Iniciar Sesión</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content [fullscreen]="true" class="ion-padding">
-    <div class="login-container">
+<!-- <ng-container *ngIf="!embeddable">
+  <ion-content [fullscreen]="true" class="login-page">
+    <div class="login-wrapper">
       <ng-container *ngTemplateOutlet="loginFormTemplate"></ng-container>
     </div>
   </ion-content>
-</ng-container>
+</ng-container> -->
 
 <!-- Embeddable mode without header and content wrappers -->
 <ng-container *ngIf="embeddable">
-  <div class="login-container">
+  <div class="login-wrapper embedded">
     <ng-container *ngTemplateOutlet="loginFormTemplate"></ng-container>
   </div>
 </ng-container>
 
 <!-- Template for the actual form content -->
 <ng-template #loginFormTemplate>
-  <div class="logo-section">
-    <ion-icon name="lock-closed-outline" size="large" color="primary"></ion-icon>
-    <h1>Bienvenido</h1>
-    <p>Inicia sesión en tu cuenta</p>
-  </div>
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-    <ion-item>
-      <ion-label position="stacked">Correo Electrónico</ion-label>
-      <ion-input
-        type="email"
-        formControlName="email"
-        placeholder="ejemplo@correo.com"
-        [class.ion-invalid]="email?.invalid && email?.touched"
-        [class.ion-valid]="email?.valid && email?.touched">
-      </ion-input>
-      <ion-note slot="error" *ngIf="email?.invalid && email?.touched">
-        <div *ngIf="email?.errors?.['required']">El correo es obligatorio</div>
-        <div *ngIf="email?.errors?.['email']">Ingresa un correo válido</div>
-      </ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input
-        [type]="showPassword ? 'text' : 'password'"
-        formControlName="password"
-        placeholder="Tu contraseña"
-        [class.ion-invalid]="password?.invalid && password?.touched"
-        [class.ion-valid]="password?.valid && password?.touched">
-      </ion-input>
-      <ion-button
-        fill="clear"
-        slot="end"
-        (click)="togglePasswordVisibility()"
-        type="button">
-        <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-      </ion-button>
-      <ion-note slot="error" *ngIf="password?.invalid && password?.touched">
-        <div *ngIf="password?.errors?.['required']">La contraseña es obligatoria</div>
-        <div *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres</div>
-      </ion-note>
-    </ion-item>
-
-    <div class="form-actions">
-      <ion-button
-        expand="block"
-        type="submit"
-        [disabled]="loginForm.invalid"
-        class="login-button">
-        Iniciar Sesión
-      </ion-button>
-
-      <ion-button
-        fill="clear"
-        expand="block"
-        (click)="goToForgotPassword()"
-        class="forgot-password-button">
-        ¿Olvidaste tu contraseña?
-      </ion-button>
-      
-      <ion-button
-        fill="outline"
-        expand="block"
-        (click)="goToRegister()"
-        class="register-button">
-        ¿No tienes cuenta? Regístrate
-      </ion-button>
+  <div class="login-container">
+    <!-- Desktop Illustration Side -->
+    <div class="illustration-side">
+      <div class="illustration-content">
+        <div class="geometric-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+          <div class="shape shape-4"></div>
+        </div>
+        <div class="main-illustration">
+          <div class="dashboard-mockup">
+            <div class="screen">
+              <div class="screen-header"></div>
+              <div class="screen-content">
+                <div class="card card-1"></div>
+                <div class="card card-2"></div>
+              </div>
+            </div>
+            <div class="check-icon">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </div>
+          <div class="security-icon">
+            <ion-icon name="lock-closed"></ion-icon>
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
+
+    <!-- Form Side -->
+    <div class="form-side">
+      <!-- Mobile Header -->
+      <div class="mobile-header">
+        <div class="header-decoration"></div>
+        <div class="logo-mobile">
+          <div class="clover-icon">
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+            <div class="leaf leaf-4"></div>
+          </div>
+        </div>
+        <div class="welcome-text">
+          <h1>Welcome</h1>
+          <p>Sign in to continue</p>
+        </div>
+      </div>
+
+      <!-- Desktop Header -->
+      <div class="desktop-header">
+        <div class="brand-logo">
+          <ion-icon name="apps" class="focus-icon"></ion-icon>
+          <span>FOCUS</span>
+        </div>
+        <div class="auth-switch">
+          <span>Already have an account?</span>
+          <button type="button" class="sign-in-link">SIGN IN</button>
+        </div>
+      </div>
+
+      <!-- Form Content -->
+      <div class="form-content">
+        <div class="form-header">
+          <h2 class="mobile-hidden">Welcome to Focus!</h2>
+          <p class="mobile-hidden">Register your account</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+          <div class="input-group">
+            <label>Email address</label>
+            <div class="input-wrapper">
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="example@email.com"
+                [class.invalid]="email?.invalid && email?.touched"
+                [class.valid]="email?.valid && email?.touched">
+            </div>
+            <div class="error-message" *ngIf="email?.invalid && email?.touched">
+              <span *ngIf="email?.errors?.['required']">Email is required</span>
+              <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Password</label>
+            <div class="input-wrapper password-input">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="Enter your password"
+                [class.invalid]="password?.invalid && password?.touched"
+                [class.valid]="password?.valid && password?.touched">
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="togglePasswordVisibility()">
+                <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+              </button>
+            </div>
+            <div class="error-message" *ngIf="password?.invalid && password?.touched">
+              <span *ngIf="password?.errors?.['required']">Password is required</span>
+              <span *ngIf="password?.errors?.['minlength']">Minimum 6 characters</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              class="login-button"
+              [disabled]="loginForm.invalid">
+              Login
+            </button>
+
+            <div class="secondary-actions">
+              <button
+                type="button"
+                class="link-button"
+                (click)="goToRegister()">
+                Sign up
+              </button>
+              <button
+                type="button"
+                class="link-button"
+                (click)="goToForgotPassword()">
+                Forgot Password
+              </button>
+            </div>
+
+            <!-- Social Login (Desktop only) -->
+            <div class="social-login desktop-only">
+              <span>Create account with</span>
+              <div class="social-buttons">
+                <button type="button" class="social-btn facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </button>
+                <button type="button" class="social-btn linkedin">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </button>
+                <button type="button" class="social-btn google">
+                  <ion-icon name="logo-google"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </ng-template>

@@ -1,0 +1,339 @@
+// Sidebar menu container styling
+ion-menu {
+  --background: var(--ion-color-background);
+  
+  ion-content {
+    // Enable vertical scrolling
+    overflow-y: auto;
+    height: 100%;
+    --background: var(--ion-color-background);
+
+    // Menu items list
+    ion-list {
+      padding: 0;
+      background: transparent;
+
+      ion-item {
+        --background: transparent;
+        --border-width: 0 0 1px 0;
+        --border-color: var(--ion-color-border);
+        --color: var(--ion-color-text);
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --min-height: 48px;
+
+        &:hover {
+          --background: rgba(var(--ion-color-primary-rgb), 0.1);
+        }
+
+        &.item-has-focus {
+          --background: rgba(var(--ion-color-primary-rgb), 0.2);
+        }
+
+        &.router-link-active {
+          --background: rgba(var(--ion-color-primary-rgb), 0.15);
+          --color: var(--ion-color-primary);
+          border-left: 3px solid var(--ion-color-primary);
+
+          ion-icon {
+            color: var(--ion-color-primary);
+          }
+        }
+
+        ion-icon {
+          font-size: 20px;
+          margin-right: 16px;
+          color: var(--ion-color-text-secondary);
+          min-width: 20px;
+        }
+
+        ion-label {
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--ion-color-text);
+        }
+      }
+    }
+
+    // Bottom buttons container
+    .bottom-buttons {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px 20px 20px;
+      background: var(--ion-color-background);
+      border-top: 1px solid var(--ion-color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      // Theme toggle button styling
+      .theme-toggle-button {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        background: rgba(var(--ion-color-text-secondary-rgb), 0.1);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--ion-color-border);
+
+        &:hover {
+          background: rgba(var(--ion-color-text-secondary-rgb), 0.15);
+          border-color: rgba(var(--ion-color-primary-rgb), 0.3);
+        }
+
+        .theme-icon {
+          font-size: 20px;
+          color: var(--ion-color-text-secondary);
+          margin-right: 12px;
+          min-width: 20px;
+        }
+
+        .theme-text {
+          flex: 1;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--ion-color-text);
+        }
+
+        .toggle-switch {
+          width: clamp(40px, 4vw, 44px);
+          height: clamp(22px, 2.5vw, 24px);
+          background: rgba(var(--ion-color-text-secondary-rgb), 0.3);
+          border-radius: 12px;
+          position: relative;
+          transition: all 0.3s ease;
+          cursor: pointer;
+
+          &.active {
+            background: var(--ion-color-primary);
+            box-shadow: 0 0 10px rgba(var(--ion-color-primary-rgb), 0.2);
+          }
+
+          .toggle-circle {
+            width: 20px;
+            height: 20px;
+            background: var(--ion-color-surface);
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+
+          &.active .toggle-circle {
+            transform: translateX(20px);
+            background: white;
+          }
+        }
+      }
+
+      // Logout button styling
+      .logout-button {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        background: rgba(var(--ion-color-danger-rgb), 0.1);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(var(--ion-color-danger-rgb), 0.2);
+
+        &:hover {
+          background: rgba(var(--ion-color-danger-rgb), 0.15);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(var(--ion-color-danger-rgb), 0.1);
+        }
+
+        .logout-icon {
+          font-size: 20px;
+          color: var(--ion-color-danger);
+          margin-right: 12px;
+          min-width: 20px;
+        }
+
+        .logout-text {
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--ion-color-danger);
+        }
+      }
+    }
+  }
+}
+
+// Custom scrollbar styling
+ion-content::part(scroll) {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+  margin-bottom: 12rem !important;
+}
+
+
+// Dark mode specific styling using custom color variables
+.dark {
+  ion-menu {
+    --background: var(--ion-color-background);
+    
+    ion-header {
+      ion-toolbar {
+        --background: var(--ion-color-surface);
+        --color: var(--ion-color-text);
+        border-bottom: 1px solid var(--ion-color-border);
+      }
+    }
+    
+    ion-content {
+      --background: var(--ion-color-background);
+      
+      ion-list {
+        background: transparent;
+        
+        ion-item {
+          --background: transparent;
+          --border-color: var(--ion-color-border);
+          --color: var(--ion-color-text);
+          
+          &:hover {
+            --background: rgba(var(--ion-color-primary-rgb), 0.1);
+          }
+          
+          &.router-link-active {
+            --background: rgba(var(--ion-color-primary-rgb), 0.2);
+            --color: var(--ion-color-primary);
+            border-left: 3px solid var(--ion-color-primary);
+            
+            ion-icon {
+              color: var(--ion-color-primary);
+            }
+          }
+
+          ion-icon {
+            color: var(--ion-color-text-secondary);
+          }
+          
+          ion-label {
+            color: var(--ion-color-text);
+          }
+        }
+      }
+
+      .bottom-buttons {
+        background: var(--ion-color-background);
+        border-top: 1px solid var(--ion-color-border);
+        
+        // Enhanced dark mode theme toggle button
+        .theme-toggle-button {
+          background: rgba(var(--ion-color-text-rgb), 0.05);
+          border: 1px solid var(--ion-color-border);
+          
+          &:hover {
+            background: rgba(var(--ion-color-text-rgb), 0.08);
+            border-color: rgba(var(--ion-color-primary-rgb), 0.3);
+          }
+          
+          .theme-icon {
+            color: var(--ion-color-text);
+          }
+          
+          .theme-text {
+            color: var(--ion-color-text);
+          }
+          
+          .toggle-switch {
+            background: rgba(var(--ion-color-text-rgb), 0.2);
+            
+            &.active {
+              background: var(--ion-color-primary);
+              box-shadow: 0 0 10px rgba(var(--ion-color-primary-rgb), 0.3);
+            }
+            
+            .toggle-circle {
+              background: var(--ion-color-surface);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
+        
+        // Enhanced dark mode logout button
+        .logout-button {
+          background: rgba(var(--ion-color-danger-rgb), 0.15);
+          border: 1px solid rgba(var(--ion-color-danger-rgb), 0.3);
+          
+          &:hover {
+            background: rgba(var(--ion-color-danger-rgb), 0.25);
+            border-color: rgba(var(--ion-color-danger-rgb), 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(var(--ion-color-danger-rgb), 0.2);
+          }
+          
+          .logout-icon {
+            color: var(--ion-color-danger);
+          }
+          
+          .logout-text {
+            color: var(--ion-color-danger);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Menu header styling
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: white;
+
+    ion-title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  ion-menu {
+    ion-content {
+      .bottom-buttons {
+        padding: 12px 16px 16px 16px;
+        gap: 10px;
+
+        .theme-toggle-button,
+        .logout-button {
+          padding: 10px 14px;
+          
+          .theme-text,
+          .logout-text {
+            font-size: 13px;
+          }
+          
+          .theme-icon,
+          .logout-icon {
+            font-size: 18px;
+          }
+        }
+        
+        .theme-toggle-button .toggle-switch {
+          width: 40px;
+          height: 22px;
+          
+          .toggle-circle {
+            width: 18px;
+            height: 18px;
+          }
+          
+          &.active .toggle-circle {
+            transform: translateX(18px);
+          }
+        }
+      }
+    }
+  }
+}

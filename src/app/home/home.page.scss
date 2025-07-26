@@ -1,27 +1,35 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  padding: 20px;
 }
 
 #container strong {
   font-size: 20px;
   line-height: 26px;
+  color: var(--ion-color-text);
+  display: block;
+  margin-bottom: 16px;
 }
 
 #container p {
   font-size: 16px;
   line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+  color: var(--ion-color-text-secondary);
+  margin: 0 0 20px 0;
 }
 
 #container a {
   text-decoration: none;
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  
+  &:hover {
+    color: var(--ion-color-primary-shade);
+    text-decoration: underline;
+  }
 }
